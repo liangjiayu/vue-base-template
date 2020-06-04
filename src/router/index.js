@@ -9,7 +9,7 @@ import VueRouter from 'vue-router';
  * redirect: redirect             redirect
  * name:'router-name'             name
  * meta : {
-    layout                       布局名称
+    layout: ''                   布局名称
     title: 'title'               页面标题
     permission: {
       auth: true,
@@ -22,16 +22,18 @@ const routes = [
   {
     path: '/',
     component: () => import('../views/Home/index.vue'),
-    meta: {
-      permission: {
-        auth: true,
-      },
-    },
+    meta: {},
   },
   {
     path: '/goods',
     component: () => import('../views/Goods/index.vue'),
-    meta: {},
+    meta: {
+      layout: 'PanelLayout',
+      title: '商品',
+      permission: {
+        auth: true,
+      },
+    },
   },
   {
     path: '/login',
