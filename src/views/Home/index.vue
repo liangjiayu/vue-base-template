@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="w1200 pt30 pb30">
+      <div class="tr mb20">
+        <el-button type="primary" @click="logout()">退出账号</el-button>
+      </div>
       <el-table :data="tableData" border v-loading="tableLoading">
         <el-table-column prop="id" label="序号" width="100"></el-table-column>
         <el-table-column prop="time" label="日期" width="120"></el-table-column>
@@ -57,9 +60,17 @@ export default {
           this.tableLoading = false;
           this.tableData = res.data.list;
         },
-        (error) => {
-          console.log(error);
-        }
+        () => {}
+      );
+    },
+
+    logout() {
+      this.$confirm('退出账号', '温馨提示', { type: 'warning' }).then(
+        () => {
+          this.$store.commit('user/clearUserInfo');
+          this.$router.push('/login');
+        },
+        () => {}
       );
     },
   },

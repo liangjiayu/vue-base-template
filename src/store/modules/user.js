@@ -1,10 +1,17 @@
+import storage from '@/plugins/storage';
+
 const state = {
-  userInfo: null,
+  userInfo: storage.get('userInfo', null),
 };
 
 const mutations = {
   setUserInfo(state, userInfo) {
     state.userInfo = userInfo;
+    storage.set('userInfo', userInfo);
+  },
+  clearUserInfo(state) {
+    state.userInfo = null;
+    storage.set('userInfo', null);
   },
 };
 
