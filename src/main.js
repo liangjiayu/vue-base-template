@@ -3,7 +3,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+// plugins
+import './plugins/axios';
 import './plugins/storage';
+import './plugins/element';
 
 // global components
 import './components/index';
