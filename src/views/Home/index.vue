@@ -51,11 +51,7 @@ export default {
   methods: {
     getTableList() {
       this.tableLoading = true;
-      this.$request(
-        '/mock/dev-api/table/list',
-        {},
-        { showLoading: false }
-      ).then(
+      this.$servers.listModule.getList({}, { showLoading: false }).then(
         (res) => {
           this.tableLoading = false;
           this.tableData = res.data.list;

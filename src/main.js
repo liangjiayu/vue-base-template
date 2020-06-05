@@ -3,6 +3,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+// servers
+import './api';
 // plugins
 import './plugins/axios';
 import './plugins/storage';
