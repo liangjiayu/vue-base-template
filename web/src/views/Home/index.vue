@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="w1200 pt30 pb30">
-      <div class="tr mb20">
+    <div class="w1200 pt-30 pb-30">
+      <div class="demo">法拉家纺垃圾啊了附件辣鸡垃圾啊樊辣椒了房间啊了放假啦就发垃圾立法解释了解放拉萨机了</div>
+      <div class="tr mb-20">
         <el-button type="primary" @click="logout()">退出账号</el-button>
       </div>
       <el-table :data="tableData" border v-loading="tableLoading">
@@ -71,3 +72,12 @@ export default {
   },
 };
 </script>
+
+
+<style lang="scss" scoped>
+.demo {
+  display: block;
+  width: 200px;
+  @include text-overflow(2);
+}
+</style>
