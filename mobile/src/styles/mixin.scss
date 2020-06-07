@@ -1,3 +1,9 @@
+@charset 'utf-8';
+
+@function rem($px) {
+  @return ($px/100px) * 1rem;
+}
+
 @mixin text-overflow($line: 1) {
   overflow: hidden;
 

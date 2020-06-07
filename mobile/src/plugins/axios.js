@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import axios from 'axios';
-import { Loading, Message } from 'element-ui';
+import { Toast } from 'vant';
 import CONFIG from '../configs/config';
 
-let loadingInstance = null;
+// let loadingInstance = null;
 
 const configs = {
   baseURL: CONFIG.API_URL,
@@ -12,11 +12,15 @@ const configs = {
 
 const _axios = axios.create(configs);
 
+/**
+ * 统一网络报错的格式
+ * @param {object} option code msg response __config
+ */
 const throwError = (option = {}) => {
   let error = Object.assign({}, option);
   // 显示错误提示
   if (option.__config.showErrorMsg) {
-    Message.error(error.msg);
+    Toast(error.msg);
   }
   throw error;
 };
@@ -34,8 +38,8 @@ _axios.interceptors.response.use(
   (response) => {
     let res = response.data;
     // 关闭加载UI
-    if (response.config.__config.showLoading && loadingInstance) {
-      loadingInstance.close();
+    if (response.config.__config.showLoading) {
+      Toast.clear();
     }
     if (!res.code) {
       throwError({
@@ -56,8 +60,8 @@ _axios.interceptors.response.use(
     return res;
   },
   (error) => {
-    if (error.config.__config.showLoading && loadingInstance) {
-      loadingInstance.close();
+    if (error.config.__config.showLoading) {
+      Toast.clear();
     }
     throwError({
       code: '9999',
@@ -81,7 +85,11 @@ const request = (url = '', data = {}, config = {}) => {
   let sendKey = __config.method === 'get' ? 'params' : 'data';
 
   if (__config.showLoading) {
-    loadingInstance = Loading.service();
+    Toast.loading({
+      duration: 0,
+      message: '加载中...',
+      forbidClick: true,
+    });
   }
 
   return _axios({

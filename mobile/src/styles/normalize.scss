@@ -132,3 +132,43 @@ html {
 }
 
 /* reset v1.4 pc */
+
+// mobile
+// 定义设计的字体大小为100px 根据设计的尺寸 计算对应的vw 推荐设计稿为 750
+// vw为响应单位 来做适配
+$desingSize: 750;
+$htmlSize: 100vw / ($desingSize/100);
+
+html {
+  font-size: 100px !important;
+}
+
+@media screen and (max-width:750px) {
+  html {
+    font-size: $htmlSize !important;
+  }
+}
+
+html {
+  touch-action: manipulation;
+}
+
+body {
+  max-width: 750px;
+  margin: 0 auto;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+//干掉input[search]默认的clear button
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}

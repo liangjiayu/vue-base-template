@@ -8,7 +8,7 @@ import './api';
 // plugins
 import './plugins/axios';
 import './plugins/storage';
-import './plugins/element';
+import './plugins/vant';
 
 // global components
 import './components/index';
