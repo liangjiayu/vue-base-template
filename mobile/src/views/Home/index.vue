@@ -1,6 +1,7 @@
 <template>
   <div>
     <van-nav-bar title="标题" left-arrow />
+    <div class="demo"></div>
     <van-button round block type="info" @click="logout">退出登录</van-button>
     <div>
       <van-cell v-for="item in list" :key="item.id" :title="item.reviewer" :value="item.title" />
@@ -45,8 +46,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import 'src/styles/mixin.scss';
-
 .demo {
   width: rem(100px);
   height: rem(100px);
